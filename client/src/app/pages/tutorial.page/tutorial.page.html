@@ -1,0 +1,97 @@
+<main>
+  <div class="panel">
+    <header>
+      <h1>Tutorial</h1>
+      <p class="subtitle">
+        How the game works and what the buttons do.
+      </p>
+    </header>
+
+    <section>
+      <h2>Goal of the game</h2>
+      <p>
+        You see a random location in Google Street View. Your goal is to guess
+        where in the world it is by placing a marker on the small map.
+      </p>
+    </section>
+
+    <section>
+      <h2>Basic flow</h2>
+      <ul>
+        <li>The game has a fixed number of rounds (set in Settings).</li>
+        <li>Each round you get a new Street View panorama.</li>
+        <li>You can look around, move on the road (if Street View allows it),
+          and search for clues: language, road signs, landscape, etc.</li>
+        <li>When you have an idea, click on the small map to place your guess.</li>
+        <li>Press <strong>Submit guess</strong> before the timer reaches zero.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Scoring</h2>
+      <ul>
+        <li>After you submit, the game shows:
+          <ul>
+            <li>Your guess (blue marker).</li>
+            <li>The correct location (green marker).</li>
+            <li>A line between them and the distance in kilometers.</li>
+          </ul>
+        </li>
+        <li>Points are higher when your guess is closer to the true location.</li>
+        <li>If you do not place a guess before the time ends, you get 0 points for that round.</li>
+        <li>Your total score is the sum of all round points.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Regions / game modes</h2>
+      <ul>
+        <li><strong>Big cities</strong> – world capitals and major cities. Easier to recognise.</li>
+        <li><strong>World</strong> – locations from anywhere on Earth with Street View coverage.</li>
+        <li><strong>Europe</strong> – locations roughly within Europe.</li>
+      </ul>
+      <p>
+        You pick the region on the main menu before starting the game.
+      </p>
+    </section>
+
+    <section>
+      <h2>Timer and settings</h2>
+      <ul>
+        <li>You can change:
+          <ul>
+            <li>Rounds per game</li>
+            <li>Seconds per round</li>
+            <li>Background music (on/off and volume)</li>
+          </ul>
+        </li>
+        <li>All of these are stored locally in your browser.</li>
+      </ul>
+
+      <div class="pillRow">
+        <div class="pill">⏱ Adjust time and rounds in Settings.</div>
+        <div class="pill">🎵 Music can be muted or turned down there as well.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tips for better guesses</h2>
+      <ul>
+        <li>Look at road signs, languages, and alphabets.</li>
+        <li>Check which side of the road cars drive on.</li>
+        <li>Notice vegetation, climate, and road markings.</li>
+        <li>In city mode, search for famous monuments or building styles.</li>
+      </ul>
+    </section>
+
+    <div class="footerRow">
+      <button class="btn" type="button" (click)="back()">
+        ← Back to menu
+      </button>
+
+      <button class="btn primary" type="button" (click)="startGame()">
+        ▶ Start a game
+      </button>
+    </div>
+  </div>
+</main>

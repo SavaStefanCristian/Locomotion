@@ -1,0 +1,62 @@
+<main>
+  <div class="card">
+    <header>
+      <h1>Google API key</h1>
+      <p class="subtitle">
+        This key is only stored in your browser and is used to load Google Maps / Street View
+        for the game.
+      </p>
+    </header>
+
+    <div class="layout">
+      <!-- Left: input and buttons -->
+      <section class="inputGroup">
+        <div>
+          <label for="apiKey">Paste your Google Maps JavaScript API key</label>
+          <input
+            id="apiKey"
+            class="keyInput"
+            type="password"
+            [(ngModel)]="key"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="Paste your Google Maps API key here…"
+          />
+        </div>
+
+        <div class="buttonsRow">
+          <button class="btn primary" type="button" (click)="save()">
+            Save &amp; Continue
+          </button>
+
+          <button class="btn" type="button" (click)="clear()">Clear</button>
+
+          <button class="btn ghost" type="button" (click)="back()">Back</button>
+        </div>
+
+        <div class="msg" [ngClass]="{ ok: msgKind === 'ok', error: msgKind === 'error' }">
+          {{ msg }}
+        </div>
+      </section>
+
+      <!-- Right: short tutorial -->
+      <section class="hintBox">
+        <h2>How to get an API key (short version)</h2>
+        <ol>
+          <li>Go to the <strong>Google Cloud Console</strong>.</li>
+          <li>Create a project (or select an existing one).</li>
+          <li>
+            Enable the <strong>Maps JavaScript API</strong> and <strong>Street View</strong>.
+          </li>
+          <li>Go to <em>APIs &amp; Services → Credentials</em> and create an API key.</li>
+          <li>Copy the generated key and paste it into the field on the left.</li>
+        </ol>
+        <p class="note">
+          Tip: in the Google Cloud Console you can (and should) restrict the key to your local
+          development and the Maps JavaScript API for safety.
+        </p>
+      </section>
+    </div>
+  </div>
+</main>

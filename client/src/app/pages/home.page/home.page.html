@@ -1,0 +1,55 @@
+<main>
+  <div class="card">
+    <header>
+      <h1>GeoGuessr</h1>
+      <p class="sub">Guess the location from Google Street View.</p>
+    </header>
+
+    <section>
+      <div class="sectionTitle">Region</div>
+      <div class="regionRow">
+        <button
+          type="button"
+          class="regionBtn"
+          [class.active]="region === 'capitals'"
+          (click)="chooseRegion('capitals')"
+        >
+          <span class="label">Big cities</span>
+          <span class="desc">World capitals & major cities. Easier game.</span>
+        </button>
+
+        <button
+          type="button"
+          class="regionBtn"
+          [class.active]="region === 'world'"
+          (click)="chooseRegion('world')"
+        >
+          <span class="label">World</span>
+          <span class="desc">Anywhere on Earth with Street View coverage.</span>
+        </button>
+
+        <button
+          type="button"
+          class="regionBtn"
+          [class.active]="region === 'europe'"
+          (click)="chooseRegion('europe')"
+        >
+          <span class="label">Europe</span>
+          <span class="desc">Only locations roughly inside Europe.</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="primaryRow">
+      <button class="btn primary" type="button" (click)="start()">▶ Start game</button>
+
+      <div class="linksRow">
+        <span class="link" (click)="goKey()">API key</span>
+        <span>·</span>
+        <span class="link" (click)="goSettings()">Settings</span>
+        <span>·</span>
+        <span class="link" (click)="goTutorial()">Tutorial</span>
+      </div>
+    </section>
+  </div>
+</main>

@@ -1,0 +1,86 @@
+<main>
+  <div class="panel">
+    <header>
+      <h1>Results</h1>
+      <p class="subtitle">
+        Game finished. Here is your score and the high scores on this device.
+      </p>
+    </header>
+
+    <!-- This game summary -->
+    <section class="section">
+      <div class="sectionTitle">This game</div>
+
+      <div class="summaryRow">
+        <div class="pill">
+          Score:
+          <span class="scoreBadge">{{ score }}</span>
+        </div>
+        <div class="pill">
+          Rounds:
+          <strong>{{ rounds }}</strong>
+        </div>
+        <div class="pill">
+          Time per round:
+          <strong>{{ secondsPerRound }}s</strong>
+        </div>
+        <div class="pill">
+          Region:
+          <strong>{{ regionLabel(region) }}</strong>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:8px;">Recorded at {{ formatDate(timestamp) }}.</p>
+    </section>
+
+    <!-- Leaderboard -->
+    <section class="section">
+      <div class="sectionTitle">High scores (this browser)</div>
+
+      <ng-container *ngIf="top && top.length > 0; else noScores">
+        <table>
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Score</th>
+            <th>Region</th>
+            <th>Rounds</th>
+            <th>Time/round</th>
+            <th>Date</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let r of top; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ r.score }}</td>
+            <td>{{ regionLabel(r.region) }}</td>
+            <td>{{ r.rounds }}</td>
+            <td>{{ r.secondsPerRound }}s</td>
+            <td class="muted">{{ formatDate(r.timestamp) }}</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <p class="muted" style="margin-top:6px;">
+          Scores are stored locally in your browser (no server).
+        </p>
+      </ng-container>
+
+      <ng-template #noScores>
+        <p class="muted">No previous scores yet. Finish a game to build your leaderboard.</p>
+      </ng-template>
+    </section>
+
+    <!-- Footer buttons -->
+    <div class="footerRow">
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn primary" type="button" (click)="playAgain()">▶ Play again</button>
+        <button class="btn ghost" type="button" (click)="backHome()">← Back to menu</button>
+      </div>
+
+      <button class="btn danger" type="button" (click)="clearLeaderboard()">
+        Clear high scores
+      </button>
+    </div>
+  </div>
+</main>

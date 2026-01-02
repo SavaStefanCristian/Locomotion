@@ -1,0 +1,89 @@
+<main>
+  <div class="panel">
+    <div>
+      <h1>Settings</h1>
+      <p class="subtitle">Adjust game length and music. Region is chosen on the main menu.</p>
+    </div>
+
+    <!-- Game section -->
+    <section class="section">
+      <div class="sectionTitle">Game</div>
+
+      <div class="fieldRow">
+        <label for="rounds">Rounds per game</label>
+        <div>
+          <input
+            id="rounds"
+            type="number"
+            class="numberInput"
+            [(ngModel)]="rounds"
+            min="1"
+            max="20"
+          />
+          <div class="hint">Between 1 and 20.</div>
+        </div>
+      </div>
+
+      <div class="fieldRow">
+        <label for="seconds">Seconds per round</label>
+        <div>
+          <input
+            id="seconds"
+            type="number"
+            class="numberInput"
+            [(ngModel)]="secondsPerRound"
+            min="30"
+            max="300"
+            step="10"
+          />
+          <div class="hint">Between 30 and 300 seconds.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music section -->
+    <section class="section">
+      <div class="sectionTitle">Music</div>
+
+      <div class="musicRow">
+        <div class="musicControls">
+          <button class="btn" type="button" (click)="toggleMusic()">
+            {{ music.enabled() ? 'Music: On' : 'Music: Off' }}
+          </button>
+        </div>
+
+        <div class="rangeWrap">
+              <span class="rangeLabel">
+                Volume (current: {{ music.volume() * 100 | number : '1.0-0' }}%)
+              </span>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.05"
+            [ngModel]="music.volume()"
+            (ngModelChange)="onVolumeChange($event)"
+            [disabled]="!music.enabled()"
+          />
+        </div>
+      </div>
+
+      <div class="hint">Changes are saved locally on this device.</div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footerRow">
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button class="btn ghost" type="button" (click)="back()">← Back</button>
+        <button class="btn danger" type="button" (click)="reset()">Reset defaults</button>
+      </div>
+
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
+        <button class="btn primary" type="button" (click)="save()">Save</button>
+        <div class="msg" [ngClass]="{ ok: msgKind === 'ok', warn: msgKind === 'warn' }">
+          {{ msg }}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

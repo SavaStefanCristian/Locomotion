@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 
-import { HomePage } from './pages/home.page';
-import { PlayPage } from './pages/play.page';
-import { KeyPage } from './pages/key.page';
-import { SettingsPage } from './pages/settings.page';
-import { ResultsPage } from './pages/results.page';
-import { TutorialPage } from './pages/tutorial.page';
+import { HomePage } from './pages/home.page/home.page';
+import { PlayPage } from './pages/play.page/play.page';
+import { KeyPage } from './pages/key.page/key.page';
+import { SettingsPage } from './pages/settings.page/settings.page';
+import { ResultsPage } from './pages/results.page/results.page';
+import { TutorialPage } from './pages/tutorial.page/tutorial.page';
 
 export const routes: Routes = [
   { path: '', component: HomePage },

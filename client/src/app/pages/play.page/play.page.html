@@ -1,0 +1,86 @@
+<main (pointerdown)="ensureMusic()">
+  <div class="topbar">
+    <div>
+      <b>Round {{ game.round() }}</b> / {{ game.totalRounds }} — Score:
+      <b>{{ game.score() }}</b>
+    </div>
+    <button class="btn danger" (click)="quit()">Quit</button>
+  </div>
+
+  <div class="stage">
+    <div id="gsv"></div>
+
+    <div class="timerTop" *ngIf="!submitted">{{ timeLabel }}</div>
+    <div class="status">{{ statusText }}</div>
+
+    <div
+      class="mapShell"
+      [class.expanded]="mapExpanded && !submitted"
+      [class.reveal]="submitted"
+      [class.compact]="!mapExpanded && !submitted"
+    >
+      <button
+        *ngIf="!submitted"
+        type="button"
+        class="mapFab"
+        (click)="toggleMap($event)"
+        [attr.aria-label]="mapExpanded ? 'Close map' : 'Expand map'"
+        [title]="mapExpanded ? 'Close map' : 'Expand map'"
+      >
+        <span class="icon">{{ mapExpanded ? '✕' : '⤢' }}</span>
+      </button>
+
+      <div class="timerInMap" *ngIf="!submitted && mapExpanded">{{ timeLabel }}</div>
+
+      <div id="guessMap"></div>
+
+      <div class="bottomBar" *ngIf="!submitted">
+        <!-- When map is expanded: show Submit -->
+        <button
+          *ngIf="mapExpanded; else expandBtn"
+          class="btn primary block"
+          type="button"
+          (click)="submitGuess()"
+        >
+          Submit guess
+        </button>
+
+        <!-- When map is minimized: big button is Expand map -->
+        <ng-template #expandBtn>
+          <button class="btn primary block" type="button" (click)="expandMap()">
+            Open map to place guess
+          </button>
+        </ng-template>
+      </div>
+
+      <div class="revealPanel" *ngIf="submitted">
+        <div class="revealRow">
+          <span><b>Round points</b></span>
+          <span>{{ lastPoints }}</span>
+        </div>
+
+        <ng-container *ngIf="hadGuess; else noGuess">
+          <div class="revealRow">
+            <span><b>Distance</b></span>
+            <span>{{ lastDistanceKm.toFixed(2) }} km</span>
+          </div>
+        </ng-container>
+
+        <ng-template #noGuess>
+          <div style="opacity: .85">
+            <div class="small">No guess placed (0 points).</div>
+          </div>
+        </ng-template>
+
+        <div class="revealRow">
+          <span><b>Total score</b></span>
+          <span>{{ game.score() + lastPoints }}</span>
+        </div>
+
+        <button class="btn primary block" (click)="nextAfterReveal()">
+          {{ game.round() === game.totalRounds ? 'See results' : 'Next round' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
