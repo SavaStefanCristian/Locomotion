@@ -6,6 +6,8 @@ import { KeyPage } from './pages/key.page/key.page';
 import { SettingsPage } from './pages/settings.page/settings.page';
 import { ResultsPage } from './pages/results.page/results.page';
 import { TutorialPage } from './pages/tutorial.page/tutorial.page';
+import {ConquestPage} from './pages/conquest.page/conquest.page';
+import {ConquestResultsPage} from './pages/conquest-results.page/conquest-results.page';
 
 export const routes: Routes = [
   { path: '', component: HomePage },
@@ -14,6 +16,8 @@ export const routes: Routes = [
   { path: 'settings', component: SettingsPage },
   { path: 'results', component: ResultsPage },
   { path: 'tutorial', component: TutorialPage },
+  { path: 'conquest', component: ConquestPage },
+  { path: 'conquest-results', component: ConquestResultsPage },
 
   { path: '**', redirectTo: '' },
 ];

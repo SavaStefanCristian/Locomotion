@@ -1,0 +1,29 @@
+<div class="modal-overlay" (click)="onOverlayClick()">
+  <!-- Stop propagation so clicking inside doesn't close modal -->
+  <div class="modal-content" (click)="$event.stopPropagation()">
+
+    <h3>Which flag belongs here?</h3>
+
+    <input
+      #searchInput
+      type="text"
+      placeholder="Search country..."
+      [(ngModel)]="searchQuery"
+      class="search-input"
+      (keydown.enter)="onEnter()"
+    >
+
+    <div class="flag-grid">
+      @for (c of countries | countryFilter : searchQuery : solvedIds; track c.id) {
+        <div class="flag-item" (click)="onSelect(c.id)">
+          <img [src]="'https://flagcdn.com/w80/' + c.id + '.png'" loading="lazy" alt="flag">
+          <span>{{ c.name }}</span>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          No matching flags found.
+        </div>
+      }
+    </div>
+  </div>
+</div>

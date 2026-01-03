@@ -36,6 +36,10 @@ export class HomePage {
     this.router.navigateByUrl('/play');
   }
 
+  playConquest(): void {
+    this.router.navigateByUrl('/conquest');
+  }
+
   goKey(): void {
     this.router.navigateByUrl('/key');
   }

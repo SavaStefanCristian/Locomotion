@@ -1,8 +1,8 @@
 <main>
   <div class="card">
     <header>
-      <h1>GeoGuessr</h1>
-      <p class="sub">Guess the location from Google Street View.</p>
+      <h1>Locomotion</h1>
+      <p class="sub">Guess the location from Google Street View. <a href="https://www.geoguessr.com/" target="_blank" rel="noopener noreferrer">GeoGuessr</a> inspired game.</p>
     </header>
 
     <section>
@@ -41,7 +41,13 @@
     </section>
 
     <section class="primaryRow">
-      <button class="btn primary" type="button" (click)="start()">▶ Start game</button>
+      <div class="action-buttons">
+        <button class="btn primary" type="button" (click)="start()">▶ Start game</button>
+
+        <button class="btn primary" type="button" (click)="playConquest()">
+          <span><span style="font-size: 16px;">👑</span> Conquest</span>
+        </button>
+      </div>
 
       <div class="linksRow">
         <span class="link" (click)="goKey()">API key</span>

@@ -1,0 +1,44 @@
+<div class="page-container">
+
+  <div class="hud-bar">
+    <div class="stat-group">
+      <span class="label">Time</span>
+      <span class="value">{{ timeLabel }}</span>
+    </div>
+
+    <div class="stat-group center">
+      <span class="label">Conquest</span>
+      <span class="value">{{ solvedIds.size }} / {{ countries.length }}</span>
+    </div>
+
+    <div class="stat-group" style="position: relative;">
+      <span class="label">Score</span>
+      <span class="value">{{ score }}</span>
+
+      @if (scoreDelta) {
+        <div
+          class="score-delta"
+          [class.gain]="scoreDelta.type === 'gain'"
+          [class.loss]="scoreDelta.type === 'loss'"
+        >
+          {{ scoreDelta.val }}
+        </div>
+      }
+    </div>
+
+    <button class="btn-quit" (click)="quit()">Exit</button>
+  </div>
+
+  <div id="conquestMap"></div>
+
+  @if (selectedCountry) {
+    <app-flag-picker-modal
+      [countries]="countries"
+      [solvedIds]="solvedIds"
+      (select)="makeGuess($event)"
+      (close)="closePicker()"
+    ></app-flag-picker-modal>
+  }
+
+
+</div>

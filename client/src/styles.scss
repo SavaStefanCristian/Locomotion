@@ -143,3 +143,66 @@ body {
 .btn.block {
   width: 100%;
 }
+
+/* --- MARKER STYLES NEED TO BE GLOBAL TO AVOID USING NG-DEEP --- */
+
+.marker-error {
+  width: 30px;
+  height: 30px;
+  background-color: #ef4444;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  opacity: 0.8;
+  cursor: not-allowed;
+  animation: pulse-red 2s infinite;
+}
+
+.marker-success {
+  animation: pulse-green 0.6s ease-out 1;
+}
+
+.custom-marker-host {
+  background: transparent;
+  border: none;
+}
+
+.marker-gray {
+  width: 30px;
+  height: 30px;
+  background-color: #9ca3af;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.marker-gray:hover {
+  transform: scale(1.2);
+  background-color: #f3f4f6;
+  border-color: #0ea5e9;
+}
+
+.marker-flag {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+
+@keyframes pulse-red {
+  0% { transform: scale(0.85); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { transform: scale(0.85); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+@keyframes pulse-green {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  50% { transform: scale(1.4); box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
