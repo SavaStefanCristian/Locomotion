@@ -1,0 +1,43 @@
+<div class="page-container">
+
+  <div class="hud-bar">
+    <div class="stat-group">
+      <span class="label">Time</span>
+      <span class="value">{{ timeLabel }}</span>
+    </div>
+
+    <div class="stat-group center">
+      <span class="label">Capitals</span>
+      <span class="value">{{ solvedIds.size }} / {{ cities.length }}</span>
+    </div>
+
+    <div class="stat-group" style="position: relative;">
+      <span class="label">Score</span>
+      <span class="value">{{ score }}</span>
+
+      @if (scoreDelta) {
+        <div
+          class="score-delta"
+          [class.gain]="scoreDelta.type === 'gain'"
+          [class.loss]="scoreDelta.type === 'loss'"
+        >
+          {{ scoreDelta.val }}
+        </div>
+      }
+    </div>
+
+    <button class="btn-quit" (click)="quit()">Exit</button>
+  </div>
+
+  <div id="capitalismMap"></div>
+
+  @if (selectedCity) {
+    <app-capital-picker-modal
+      [selectedCity]="selectedCity"
+      [allCities]="cities"
+      (select)="makeGuess($event)"
+      (close)="closePicker()"
+    ></app-capital-picker-modal>
+  }
+
+</div>

@@ -8,6 +8,8 @@ import { ResultsPage } from './pages/results.page/results.page';
 import { TutorialPage } from './pages/tutorial.page/tutorial.page';
 import {ConquestPage} from './pages/conquest.page/conquest.page';
 import {ConquestResultsPage} from './pages/conquest-results.page/conquest-results.page';
+import {CapitalismPage} from './pages/capitalism.page/capitalism.page';
+import {CapitalismResultsPage} from './pages/capitalism-results.page/capitalism-results.page';
 
 export const routes: Routes = [
   { path: '', component: HomePage },
@@ -18,6 +20,8 @@ export const routes: Routes = [
   { path: 'tutorial', component: TutorialPage },
   { path: 'conquest', component: ConquestPage },
   { path: 'conquest-results', component: ConquestResultsPage },
+  { path: 'capitalism', component: CapitalismPage },
+  { path: 'capitalism-results', component: CapitalismResultsPage },
 
   { path: '**', redirectTo: '' },
 ];

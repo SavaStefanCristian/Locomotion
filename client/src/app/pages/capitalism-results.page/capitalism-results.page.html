@@ -1,0 +1,67 @@
+<main>
+  <div class="panel">
+    <header>
+      <h1>Capitalism Complete!</h1>
+      <p class="subtitle">
+        You've identified all the capital cities. Here is your performance.
+      </p>
+    </header>
+
+    <section class="section">
+      <div class="sectionTitle">This Run</div>
+
+      <div class="summaryRow">
+        <div class="pill">
+          Final Score:
+          <span class="scoreBadge">{{ score }}</span>
+        </div>
+        <div class="pill">
+          Total Time:
+          <strong>{{ timeLabel }}</strong>
+        </div>
+      </div>
+
+      <p class="muted top-margin-8">Recorded at {{ formatDate(timestamp) }}.</p>
+    </section>
+
+    <section class="section">
+      <div class="sectionTitle">Top Capitalists (This Device)</div>
+
+      @if (top && top.length > 0) {
+        <table>
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Score</th>
+            <th>Time</th>
+            <th>Date</th>
+          </tr>
+          </thead>
+          <tbody>
+            @for (r of top; track r.timestamp; let i = $index) {
+              <tr>
+                <td>{{ i + 1 }}</td>
+                <td class="bold">{{ r.score }}</td>
+                <td>{{ r.timeLabel }}</td>
+                <td class="muted">{{ formatDate(r.timestamp) }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      } @else {
+        <p class="muted">No scores yet.</p>
+      }
+    </section>
+
+    <div class="footerRow">
+      <div class="buttonsHolder">
+        <button class="btn primary" type="button" (click)="playAgain()">▶ Play Again</button>
+        <button class="btn ghost" type="button" (click)="backHome()">← Back to Menu</button>
+      </div>
+
+      <button class="btn danger" type="button" (click)="clearLeaderboard()">
+        Reset History
+      </button>
+    </div>
+  </div>
+</main>

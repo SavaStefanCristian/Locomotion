@@ -39,7 +39,9 @@ export class HomePage {
   playConquest(): void {
     this.router.navigateByUrl('/conquest');
   }
-
+  playCapitalism(): void {
+    this.router.navigateByUrl('/capitalism');
+  }
   goKey(): void {
     this.router.navigateByUrl('/key');
   }
